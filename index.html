@@ -14,23 +14,31 @@
       border: 0;
       outline: 0;
       border-radius: 4px;
+      overflow: hidden;
       background-color: #2196f3;
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
       color: #fff;
       text-transform: uppercase;
     }
 
-    .ripple {
+    button .ripple {
       position: absolute;
-      width: 10px;
-      height: 10px;
       border-radius: 50%;
       background-color: rgba(255, 255, 255, 0.7);
+      transform: scale(0);
+      animation: ripple 600ms linear;
+    }
+
+    @keyframes ripple {
+      to {
+        transform: scale(2.5);
+        opacity: 0;
+      }
     }
   </style>
 
   <body>
     <button type="button">ripple</button>
-    <script difer src="./ripple.js" />
+    <script defer src="./ripple.js"></script>
   </body>
 </html>
