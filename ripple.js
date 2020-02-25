@@ -1,7 +1,7 @@
 const buttons = document.querySelectorAll("button");
 
 function createRipple(e) {
-  const circle = document.createElement("div");
+  const circle = document.createElement("span");
   circle.classList.add("ripple");
   this.appendChild(circle);
 
@@ -13,4 +13,14 @@ function createRipple(e) {
 
 Array.prototype.slice.call(buttons).forEach(function(btn) {
   btn.addEventListener("click", createRipple);
+  btn.addEventListener("webkitAnimationEnd", function(e) {
+    if (e.animationName === "ripple" && e.target) {
+      e.target.remove();
+    }
+  });
+  btn.addEventListener("animationend", function(e) {
+    if (e.animationName === "ripple" && e.target) {
+      e.target.remove();
+    }
+  });
 });
